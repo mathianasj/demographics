@@ -37,10 +37,6 @@ public class CloudEventUtil {
     @ConfigProperty(name = "service.source")
     String serviceSource;
 
-    @Inject
-    @RestClient
-    KNativeBroker kNativeBroker;
-
     @Channel("default-broker")
     Emitter<Object> cloudEventEmitter;
 

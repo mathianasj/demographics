@@ -61,8 +61,8 @@ public class DemographicsResource {
     @POST
     public Uni<Void> createPerson(NewPerson newPerson) {
         String personId = UUID.randomUUID().toString();
-        return cloudEventUtil.sendEvent(eventMapper.toPersonCreated(newPerson), personId)
-            .onItem().transformToUni(e -> cloudEventUtil.sendEvent(eventMapper.toEmailUpdated(newPerson), personId))
+        return cloudEventUtil.sendEvent(eventMapper.toPersonCreated(newPerson, personId), personId)
+            .onItem().transformToUni(e -> cloudEventUtil.sendEvent(eventMapper.toEmailUpdated(newPerson, personId), personId))
             .onFailure().invoke(e -> {
                 System.out.println("found an error");
                 System.err.println(e);

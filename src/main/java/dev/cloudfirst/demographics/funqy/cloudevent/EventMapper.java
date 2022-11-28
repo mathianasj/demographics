@@ -8,9 +8,9 @@ import dev.cloudfirst.demographics.eventsource.PersonState;
 
 @Mapper(componentModel = "cdi")
 public interface EventMapper {
-    PersonCreated toPersonCreated(NewPerson newPerson);
+    PersonCreated toPersonCreated(NewPerson newPerson, String id);
 
-    EmailUpdated toEmailUpdated(NewPerson newPerson);
+    EmailUpdated toEmailUpdated(NewPerson newPerson, String id);
 
     void mergePersonState(PersonCreated personCreated, @MappingTarget PersonState personState);
 
